@@ -57,6 +57,9 @@ class AutoStripAttributes::Config
       set_filter :convert_non_breaking_spaces => false do |value|
         value.respond_to?(:gsub) ? value.gsub("\u00A0", " ") : value
       end
+      set_filter :remove_zero_spaces => false do |value
+        value.respond_to?(:gsub) ? value.gsub("\u200B", "") : value
+      end
       set_filter :strip => true do |value|
         value.respond_to?(:strip) ? value.strip : value
       end
